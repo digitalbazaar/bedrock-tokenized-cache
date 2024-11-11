@@ -1,42 +1,51 @@
 {
-  "name": "bedrock-module-template-http",
+  "name": "@bedrock/tokenized-cache",
   "version": "0.0.1-0",
-  "description": "Bedrock HTTP API",
-  "main": "./lib",
+  "type": "module",
+  "description": "Bedrock Tokenized Cache",
+  "main": "./lib/index.js",
   "scripts": {
     "lint": "eslint ."
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitalbazaar/bedrock-module-template-http"
+    "url": "https://github.com/digitalbazaar/bedrock-tokenized-cache"
   },
   "keywords": [
-    "bedrock"
+    "bedrock",
+    "tokenization"
   ],
   "author": {
     "name": "Digital Bazaar, Inc.",
     "email": "support@digitalbazaar.com",
-    "url": "https://digitalbazaar.com"
+    "url": "https://digitalbazaar.com/"
   },
   "bugs": {
-    "url": "https://github.com/digitalbazaar/bedrock-module-template-http/issues"
+    "url": "https://github.com/digitalbazaar/bedrock-tokenized-cache/issues"
   },
-  "homepage": "https://github.com/digitalbazaar/bedrock-module-template-http",
+  "homepage": "https://github.com/digitalbazaar/bedrock-tokenized-cache",
   "dependencies": {
-    "esm": "^3.2.25"
+    "assert-plus": "^1.0.0",
+    "base64url-universal": "^2.0.0",
+    "canonicalize": "^1.0.8",
+    "lru-cache": "^6.0.0"
   },
   "peerDependencies": {
-    "bedrock": "^4.1.1",
-    "bedrock-express": "^3.2.0"
+    "@bedrock/core": "^6.0.1",
+    "@bedrock/mongodb": "^10.0.0",
+    "@bedrock/tokenizer": "^10.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.47.0",
+    "eslint-config-digitalbazaar": "^5.0.1",
+    "eslint-plugin-jsdoc": "^46.5.0",
+    "eslint-plugin-unicorn": "^48.0.1",
+    "jsdoc-to-markdown": "^8.0.0"
   },
   "directories": {
     "lib": "./lib"
   },
-  "devDependencies": {
-    "eslint": "^7.14.0",
-    "eslint-config-digitalbazaar": "^2.6.1"
-  },
   "engines": {
-    "node": ">=12"
+    "node": ">=18"
   }
 }
