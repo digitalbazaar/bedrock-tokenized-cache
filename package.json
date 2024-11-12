@@ -25,10 +25,10 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-tokenized-cache",
   "dependencies": {
+    "@digitalbazaar/lru-memoize": "^3.0.2",
     "assert-plus": "^1.0.0",
     "base64url-universal": "^2.0.0",
-    "canonicalize": "^1.0.8",
-    "lru-cache": "^6.0.0"
+    "canonicalize": "^1.0.8"
   },
   "peerDependencies": {
     "@bedrock/core": "^6.0.1",

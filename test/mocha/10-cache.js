@@ -27,14 +27,23 @@ describe('Cache', function() {
         value: {},
         ttl: 30000
       });
+      // first fetch should hit database, second in-memory cache
+      const record1a = await cache.get({id});
+      record1.should.eql(record1a);
+      const record1b = await cache.get({id});
+      record1a.should.eql(record1b);
+
       const record2 = await cache.upsert({
         id,
         value: {},
         ttl: 40000
       });
-      const record3 = await cache.get({id});
+      // first fetch should hit database, second in-memory cache
+      const record2a = await cache.get({id});
+      const record2b = await cache.get({id});
       record1.should.not.eql(record2);
-      record2.should.eql(record3);
+      record2.should.eql(record2a);
+      record2b.should.eql(record2a);
     });
 
     it('should error when no "id" is passed', async () => {
