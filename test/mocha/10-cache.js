@@ -67,6 +67,23 @@ describe('Cache', function() {
       }
       err.message.should.include('Either "id" or "tokenizedId"');
     });
+
+    it('should return not found for an expired entry', async () => {
+      const id = crypto.randomUUID();
+      await cache.upsert({
+        id,
+        value: {},
+        ttl: 0
+      });
+
+      let err;
+      try {
+        await cache.get({id});
+      } catch(e) {
+        err = e;
+      }
+      err.name.should.equal('NotFoundError');
+    });
   });
 
   describe('cache._hmacString()', () => {
