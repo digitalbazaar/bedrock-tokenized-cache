@@ -8,6 +8,27 @@ import crypto from 'node:crypto';
 import {tokenizers} from '@bedrock/tokenizer';
 
 describe('Cache', function() {
+  describe('cache.createId()', () => {
+    it('should create the ID for equivalent objects', async () => {
+      const object1 = {
+        a: 'a',
+        b: 'b',
+        c: 'c',
+        num: 1,
+        bool: true
+      };
+      const object2 = {...object1};
+      const object3 = {...object1, a: 'different'};
+
+      const {id: id1} = await cache.createId({object: object1});
+      const {id: id2} = await cache.createId({object: object2});
+      const {id: id3} = await cache.createId({object: object3});
+
+      id1.should.equal(id2);
+      id1.should.not.equal(id3);
+    });
+  });
+
   describe('cache.upsert()', () => {
     it('should insert and get a cache entry', async () => {
       const id = crypto.randomUUID();
