@@ -39,14 +39,14 @@ describe('Cache', function() {
       });
       const record2 = await cache.get({id});
       record1.should.eql(record2);
-      // should fetch the same record again after clearing the cache
+      // should fetch the same record again after clearing the in-memory cache
       cache._ENTRY_CACHE.cache.reset();
       const record3 = await cache.get({id});
       record2.should.eql(record3);
     });
 
     it('should replace an existing cache entry', async () => {
-      // clear cache
+      // clear in-memory cache
       cache._ENTRY_CACHE.cache.reset();
 
       const id = crypto.randomUUID();
@@ -61,7 +61,7 @@ describe('Cache', function() {
       cache._ENTRY_CACHE.cache.itemCount.should.equal(1);
       const record1b = await cache.get({id});
       record1a.should.eql(record1b);
-      // should have reused cache
+      // should have reused in-memory cache
       cache._ENTRY_CACHE.cache.itemCount.should.equal(1);
 
       const record2 = await cache.upsert({
@@ -73,7 +73,7 @@ describe('Cache', function() {
       const record2a = await cache.get({id});
       cache._ENTRY_CACHE.cache.itemCount.should.equal(1);
       const record2b = await cache.get({id});
-      // should have reused cache
+      // should have reused in-memory cache
       cache._ENTRY_CACHE.cache.itemCount.should.equal(1);
       record1.should.not.eql(record2);
       record2.should.eql(record2a);
@@ -117,7 +117,7 @@ describe('Cache', function() {
     });
 
     it('should return not found for an expired entry', async () => {
-      // clear cache
+      // clear in-memory cache
       cache._ENTRY_CACHE.cache.reset();
 
       // add entry with long TTL
@@ -128,7 +128,7 @@ describe('Cache', function() {
         ttl: 30000
       });
       await cache.get({id});
-      // confirm cache population
+      // confirm in-memory cache population
       cache._ENTRY_CACHE.cache.itemCount.should.equal(1);
 
       // overwrite with expired entry
@@ -146,7 +146,7 @@ describe('Cache', function() {
       }
       err.name.should.equal('NotFoundError');
 
-      // cache entry should have been deleted
+      // in-memory cache entry should have been deleted
       cache._ENTRY_CACHE.cache.itemCount.should.equal(0);
     });
   });
