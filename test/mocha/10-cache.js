@@ -39,6 +39,10 @@ describe('Cache', function() {
       });
       const record2 = await cache.get({id});
       record1.should.eql(record2);
+      // should fetch the same record again after clearing the cache
+      cache._ENTRY_CACHE.cache.reset();
+      const record3 = await cache.get({id});
+      record2.should.eql(record3);
     });
 
     it('should replace an existing cache entry', async () => {
