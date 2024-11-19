@@ -30,7 +30,7 @@ describe('Cache', function() {
   });
 
   describe('cache.upsert()', () => {
-    it('should insert and get a cache entry', async () => {
+    it('should add and get a cache entry', async () => {
       const id = crypto.randomUUID();
       const record1 = await cache.upsert({
         id,
@@ -84,6 +84,20 @@ describe('Cache', function() {
         err = e;
       }
       err.message.should.include('Either "id" or "tokenizedId"');
+    });
+
+    it('should add using "tokenizedId"', async () => {
+      const id = crypto.randomUUID();
+      const {tokenizedId} = await cache.tokenizeId({id});
+      const record1 = await cache.upsert({
+        tokenizedId,
+        value: {},
+        ttl: 30000
+      });
+      const record2 = await cache.get({id});
+      record1.should.eql(record2);
+      const record3 = await cache.get({tokenizedId});
+      record2.should.eql(record3);
     });
   });
 
