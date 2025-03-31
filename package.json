@@ -1,6 +1,6 @@
 {
   "name": "@bedrock/tokenized-cache",
-  "version": "1.0.3-0",
+  "version": "2.0.0",
   "type": "module",
   "description": "Bedrock Tokenized Cache",
   "main": "./lib/index.js",
