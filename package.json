@@ -27,20 +27,19 @@
   "dependencies": {
     "@digitalbazaar/lru-memoize": "^3.0.2",
     "assert-plus": "^1.0.0",
-    "base64url-universal": "^2.0.0",
-    "canonicalize": "^1.0.8"
+    "canonicalize": "^2.1.0"
   },
   "peerDependencies": {
-    "@bedrock/core": "^6.0.1",
-    "@bedrock/mongodb": "^10.0.0",
-    "@bedrock/tokenizer": "^10.0.0"
+    "@bedrock/core": "^6.3.0",
+    "@bedrock/mongodb": "^11.0.0",
+    "@bedrock/tokenizer": "^11.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.47.0",
+    "eslint": "^8.57.1",
     "eslint-config-digitalbazaar": "^5.0.1",
-    "eslint-plugin-jsdoc": "^46.5.0",
-    "eslint-plugin-unicorn": "^48.0.1",
-    "jsdoc-to-markdown": "^8.0.0"
+    "eslint-plugin-jsdoc": "^50.6.9",
+    "eslint-plugin-unicorn": "^56.0.1",
+    "jsdoc-to-markdown": "^9.1.1"
   },
   "directories": {
     "lib": "./lib"
