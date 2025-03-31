@@ -1,6 +1,6 @@
 # bedrock-tokenized-cache ChangeLog
 
-## 2.0.0 - 2025-mm-dd
+## 2.0.0 - 2025-03-30
 
 ### Changed
 - Update peer dependencies.
